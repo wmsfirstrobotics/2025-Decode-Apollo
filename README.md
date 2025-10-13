@@ -1,4 +1,3 @@
-# Road Runner Quickstart
+# 2025 Decode Apollo 
 
-Check out the [docs](https://rr.brott.dev/docs/v1-0/tuning/).
-
+FTC robot code for Team Apollo 23410.
