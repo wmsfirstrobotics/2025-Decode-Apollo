@@ -1,3 +1,4 @@
+//make servo communicate with limelight to follow apriltag
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.limelightvision.LLResult;
@@ -13,8 +14,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 import java.util.List;
 
-@TeleOp(name = "AprilTag Limelight Test", group = "Testing")
-public class AprilTagLimelightTest extends OpMode {
+@TeleOp(name = "AprilTag Limelight (to be added to main drive code)", group = "Testing")
+public class LimelightNew extends OpMode {
     private Limelight3A limelight;
     private IMU imu;
 
