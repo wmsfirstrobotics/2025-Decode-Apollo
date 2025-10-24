@@ -13,7 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 import java.util.List;
 
-@TeleOp(name = "AprilTag Limelight Test", group = "Testing")
+@TeleOp(name = "AprilTag Limelight", group = "Testing")
 public class AprilTagLimelightTest extends OpMode {
     private Limelight3A limelight;
     private IMU imu;

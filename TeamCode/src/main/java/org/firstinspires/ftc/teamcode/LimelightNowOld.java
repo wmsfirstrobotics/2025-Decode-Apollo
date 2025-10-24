@@ -13,8 +13,8 @@ import com.qualcomm.robotcore.util.Range;
 
 import java.util.List;
 
-@TeleOp(name = "limelight auto-detect servo", group = "Testing")
-public class LimelightNew extends OpMode {
+@TeleOp(name = "limelight old follow (dont work)", group = "Testing")
+public class LimelightNowOld extends OpMode {
     private Limelight3A limelight;
     private IMU imu;
 
