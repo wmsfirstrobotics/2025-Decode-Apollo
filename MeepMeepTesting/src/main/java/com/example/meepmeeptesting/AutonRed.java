@@ -12,8 +12,8 @@ public class AutonRed {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
 
-        myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-49, 49, Math.toRadians(-54)))
-                .waitSeconds(2)
+        myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-61, 33, Math.toRadians(0)))
+                .waitSeconds(10)
                 .splineToLinearHeading(new Pose2d(-11.5, 27, Math.toRadians(-270)), Math.toRadians(-270))
                 .lineToY(47.5)
                 .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-54)), Math.toRadians(200))
