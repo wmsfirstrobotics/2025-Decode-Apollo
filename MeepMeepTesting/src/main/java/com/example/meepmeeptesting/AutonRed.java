@@ -27,12 +27,10 @@ public class AutonRed {
                 .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-54)), Math.toRadians(200))
                 .waitSeconds(2)
 
-
                 .build());
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_DECODE_JUICE_DARK)
                 .setDarkMode(true)
-                // Background opacity from 0-1
                 .setBackgroundAlpha(0.95f)
                 .addEntity(myBot)
                 .start();
