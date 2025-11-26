@@ -43,13 +43,14 @@ public class AutonomousBlue extends LinearOpMode {
 
         Action trajectory = myBot.actionBuilder(new Pose2d(62.5, -24, Math.toRadians(180)))
 
+              //.splineToLinearHeading(new Pose2d(-7,-58, Math.toRadians(180)), Math.toRadians(270))
+              //.lineToY(-40)
                 .splineToLinearHeading(new Pose2d(-11.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .strafeTo(new Vector2d(-11.5, -47.5))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
                 .waitSeconds(2)
-              //  .splineToLinearHeading(new Pose2d(-7,-58, Math.toRadians(180)), Math.toRadians(270))
-               // .lineToY(-40)
+         
                 .splineToLinearHeading(new Pose2d(11.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .strafeTo(new Vector2d(11.5, -47.5))
                 .setReversed(true)
