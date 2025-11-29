@@ -7,7 +7,9 @@ import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.PoseVelocity2d;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.teamcode.Drawing;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.TankDrive;
@@ -22,6 +24,11 @@ public class LocalizationTest extends LinearOpMode {
 
             waitForStart();
 
+            drive.rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            drive.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            drive.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            drive.leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
             while (opModeIsActive()) {
                 drive.setDrivePowers(new PoseVelocity2d(
                         new Vector2d(
@@ -33,10 +40,18 @@ public class LocalizationTest extends LinearOpMode {
 
                 drive.updatePoseEstimate();
 
+
+
+
+
                 Pose2d pose = drive.localizer.getPose();
                 telemetry.addData("x", pose.position.x);
                 telemetry.addData("y", pose.position.y);
                 telemetry.addData("heading (deg)", Math.toDegrees(pose.heading.toDouble()));
+                telemetry.addData("leftFront", drive.leftFront.getCurrentPosition());
+                telemetry.addData("rightFront", drive.rightFront.getCurrentPosition());
+                telemetry.addData("leftBack", drive.leftBack.getCurrentPosition());
+                telemetry.addData("rightBack", drive.rightBack.getCurrentPosition());
                 telemetry.update();
 
                 TelemetryPacket packet = new TelemetryPacket();

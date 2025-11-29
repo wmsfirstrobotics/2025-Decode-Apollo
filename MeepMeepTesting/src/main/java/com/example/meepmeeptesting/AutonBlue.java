@@ -15,14 +15,14 @@ public class AutonBlue {
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(62.5, -24, Math.toRadians(180)))
 
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
+                .waitSeconds(2)
                 .splineToLinearHeading(new Pose2d(-11.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .strafeTo(new Vector2d(-11.5, -47.5))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
                 .waitSeconds(2)
-              //  .splineToLinearHeading(new Pose2d(2,-54, Math.toRadians(180)), Math.toRadians(270))
-               //         .lineToY(-40)
-                .splineToLinearHeading(new Pose2d(11.5, -27, Math.toRadians(270)), Math.toRadians(0))
+                .splineToLinearHeading(new Pose2d(11.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .strafeTo(new Vector2d(11.5, -47.5))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
@@ -30,8 +30,7 @@ public class AutonBlue {
                 .splineToLinearHeading(new Pose2d(35.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .strafeTo(new Vector2d(35.5, -47.5))
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(2)
+                .splineToLinearHeading(new Pose2d(0, -40, Math.toRadians(90)), Math.toRadians(90))
                 .build());
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_DECODE_JUICE_DARK)
