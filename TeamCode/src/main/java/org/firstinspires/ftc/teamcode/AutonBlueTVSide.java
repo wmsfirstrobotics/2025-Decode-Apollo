@@ -49,13 +49,13 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(54)))
 
-                .splineToLinearHeading(new Pose2d(-11.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .splineToLinearHeading(new Pose2d(-15.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
                 // start intaking motor
 
-        Action trajectory3 = myBot.actionBuilder(new Pose2d(-11.5, -27, Math.toRadians(270)))
+        Action trajectory3 = myBot.actionBuilder(new Pose2d(-15.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(-11.5, -47.5))
+                .strafeTo(new Vector2d(-11.5, -52.5))
                 .build();
                 // stop intaking motor
 
