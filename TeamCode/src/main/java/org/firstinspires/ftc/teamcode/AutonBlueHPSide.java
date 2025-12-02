@@ -11,24 +11,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 public class AutonBlueHPSide extends LinearOpMode {
 
-//    public class FakeIndexServo {
-//        private CRServo servo;
-//        public FakeIndexServo(HardwareMap hardwareMap) {
-//            servo = hardwareMap.get(CRServo.class, "servo");
-//        }
-//
-//        public class FakeIndexerSpin implements Action {
-//            public boolean run (@NonNull TelemetryPacket packet){
-//                servo.set(1);
-//                return false;
-//            }
-//
-//        }
-//        public Action fakeIndexerSpin() {
-//            return new FakeIndexerSpin();
-//        }
-//
-//}
 
 
     @Override
@@ -37,26 +19,11 @@ public class AutonBlueHPSide extends LinearOpMode {
 
         Action trajectory = myBot.actionBuilder(new Pose2d(62.5, -18, Math.toRadians(180)))
 
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(2)
-                .splineToLinearHeading(new Pose2d(-11.5, -27, Math.toRadians(270)), Math.toRadians(270))
-                .strafeTo(new Vector2d(-11.5, -47.5))
-                .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(2)
-                .splineToLinearHeading(new Pose2d(11.5, -27, Math.toRadians(270)), Math.toRadians(270))
-                .strafeTo(new Vector2d(11.5, -47.5))
-                .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(2)
-                .splineToLinearHeading(new Pose2d(35.5, -27, Math.toRadians(270)), Math.toRadians(270))
-                .strafeTo(new Vector2d(35.5, -47.5))
-                .setReversed(true)
-                .splineToLinearHeading(new Pose2d(0, -40, Math.toRadians(90)), Math.toRadians(90))
+                .strafeTo(new Vector2d(75, -18))
+
                 .build();
         waitForStart();
 
-//        FakeIndexServo fakeIndexServo = new FakeIndexServo(hardwareMap);
 
         Actions.runBlocking(trajectory);;
     }
