@@ -28,8 +28,8 @@ public class AutonBlueTVSide extends LinearOpMode {
 
     private CRServo indexer;
     private DcMotor intake;
-    private DcMotor leftShooter;
-    private DcMotor rightShooter;
+    private DcMotorEx leftShooter;
+    private DcMotorEx rightShooter;
 
 
     @Override
@@ -37,12 +37,12 @@ public class AutonBlueTVSide extends LinearOpMode {
         MecanumDrive myBot = new MecanumDrive(hardwareMap, new Pose2d(-62.5, -39.5, Math.toRadians(0)));
         indexer = hardwareMap.get(CRServo.class, "indexer");
         intake = hardwareMap.get(DcMotor.class, "intake");
-        leftShooter = hardwareMap.get(DcMotor.class, "leftShooter");
-        rightShooter = hardwareMap.get(DcMotor.class, "rightShooter");
+        leftShooter = hardwareMap.get(DcMotorEx.class, "leftShooter");
+        rightShooter = hardwareMap.get(DcMotorEx.class, "rightShooter");
 
         Action trajectory1 = myBot.actionBuilder(new Pose2d(-62.5, -39.5, Math.toRadians(0)))
 
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(35))
                 .waitSeconds(3)
                 .build();
                 //shoot after this
@@ -55,7 +55,7 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Action trajectory3 = myBot.actionBuilder(new Pose2d(-15.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(-11.5, -52.5))
+                .strafeTo(new Vector2d(-11.5, -50.5))
                 .build();
                 // stop intaking motor
 
@@ -75,7 +75,7 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Action trajectory6 = myBot.actionBuilder(new Pose2d(11.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(11.5, -47.5))
+                .strafeTo(new Vector2d(11.5, -50.5))
                 .build();
         //stop intaking motor
 
@@ -94,7 +94,7 @@ public class AutonBlueTVSide extends LinearOpMode {
                 //start intaking motor
 
         Action trajectory9 = myBot.actionBuilder(new Pose2d(35.5, -27, Math.toRadians(270)))
-                .strafeTo(new Vector2d(35.5, -47.5))
+                .strafeTo(new Vector2d(35.5, -50.5))
                 .build();
                 //stop intaking motor
 
@@ -109,6 +109,21 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
+        leftShooter.setVelocity(957);
+        rightShooter.setVelocity(-957);
+        indexer.setPower(-1);
+        sleep(2700);
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+        sleep(700);
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+
+        indexer.setPower(0);
+        leftShooter.setVelocity(0);
+        rightShooter.setVelocity(-0);
 
         Actions.runBlocking(trajectory2);
         // start intaking motor
@@ -119,6 +134,26 @@ public class AutonBlueTVSide extends LinearOpMode {
         intake.setPower(0);
         Actions.runBlocking(trajectory4);
         // start shooting
+        leftShooter.setVelocity(957);
+        rightShooter.setVelocity(-957);
+        indexer.setPower(-1);
+
+
+        sleep(2700);
+
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+        sleep(700);
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+
+        leftShooter.setVelocity(0);
+        rightShooter.setVelocity(-0);
+        indexer.setPower(0);
+
+
         Actions.runBlocking(trajectory5);
         //start intaking motor
         intake.setPower(-1);
@@ -126,7 +161,26 @@ public class AutonBlueTVSide extends LinearOpMode {
         //stop intaking motor
         intake.setPower(0);
         Actions.runBlocking(trajectory7);
-        //start shooting
+        // shooting
+        leftShooter.setVelocity(957);
+        rightShooter.setVelocity(-957);
+        indexer.setPower(-1);
+
+
+        sleep(2700);
+
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+        sleep(700);
+        intake.setPower(1);
+        sleep(700);
+        intake.setPower(0);
+
+        leftShooter.setVelocity(0);
+        rightShooter.setVelocity(-0);
+        indexer.setPower(0);
+
         Actions.runBlocking(trajectory8);
         //start intaking motor
         intake.setPower(-1);
