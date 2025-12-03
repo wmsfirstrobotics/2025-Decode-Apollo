@@ -43,7 +43,6 @@ public class AutonBlueTVSide extends LinearOpMode {
         Action trajectory1 = myBot.actionBuilder(new Pose2d(-62.5, -39.5, Math.toRadians(0)))
 
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(35))
-                .waitSeconds(3)
                 .build();
                 //shoot after this
 
@@ -63,7 +62,6 @@ public class AutonBlueTVSide extends LinearOpMode {
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(3)
                 .build();
                 // start shooting stuff
 
@@ -83,7 +81,6 @@ public class AutonBlueTVSide extends LinearOpMode {
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
-                .waitSeconds(3)
                 .build();
         //start shooting stuff
 
