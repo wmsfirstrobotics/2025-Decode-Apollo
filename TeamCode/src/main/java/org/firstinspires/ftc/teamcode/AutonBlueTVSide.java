@@ -13,16 +13,11 @@ import com.acmerobotics.roadrunner.VelConstraint;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-@Autonomous(name = "AutonBlue TV Side", group = "Autonomous")
+@Autonomous(name = "AutonBlue TV Side", group = "Autonomous", preselectTeleOp = ("LocalizationTestBeta"))
 
 public class AutonBlueTVSide extends LinearOpMode {
 
@@ -69,17 +64,17 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(16.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .splineToLinearHeading(new Pose2d(14.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
 //start intaking motor
 
-        Action trajectory6 = myBot.actionBuilder(new Pose2d(16.5, -27, Math.toRadians(270)))
+        Action trajectory6 = myBot.actionBuilder(new Pose2d(14.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(16.5, -50.5), new TranslationalVelConstraint(13))
+                .strafeTo(new Vector2d(14.5, -50.5), new TranslationalVelConstraint(13))
                 .build();
         //stop intaking motor
 
-        Action trajectory7 = myBot.actionBuilder(new Pose2d(16.5, -50.5, Math.toRadians(270)))
+        Action trajectory7 = myBot.actionBuilder(new Pose2d(14.5, -50.5, Math.toRadians(270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200))
@@ -88,16 +83,16 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(40.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .splineToLinearHeading(new Pose2d(39.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
                 //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(40.5, -27, Math.toRadians(270)))
-                .strafeTo(new Vector2d(40.5, -50.5), new TranslationalVelConstraint(13))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(39.5, -27, Math.toRadians(270)))
+                .strafeTo(new Vector2d(39.5, -50.5), new TranslationalVelConstraint(13))
                 .build();
                 //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(40.5, -50.5, Math.toRadians(270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(30.5, -50.5, Math.toRadians(270)))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(0, -40, Math.toRadians(90)), Math.toRadians(90))
                 .build();
@@ -111,9 +106,9 @@ public class AutonBlueTVSide extends LinearOpMode {
         //shoot 3 balls
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(1000);
+        sleep(900);
         intake.setPower(-1);
-        sleep(600);
+        sleep(700);
         indexer.setPower(0);
         intake.setPower(0);
 
@@ -131,9 +126,9 @@ public class AutonBlueTVSide extends LinearOpMode {
         //shoot 3 balls
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(1000);
+        sleep(900);
         intake.setPower(-1);
-        sleep(500);
+        sleep(700);
         indexer.setPower(0);
         intake.setPower(0);
 
@@ -149,9 +144,9 @@ public class AutonBlueTVSide extends LinearOpMode {
         // shooting
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(1000);
+        sleep(900);
         intake.setPower(-1);
-        sleep(500);
+        sleep(700);
         indexer.setPower(0);
         intake.setPower(0);
 
