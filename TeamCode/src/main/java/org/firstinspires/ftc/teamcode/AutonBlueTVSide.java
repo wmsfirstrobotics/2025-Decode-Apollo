@@ -39,14 +39,16 @@ public class AutonBlueTVSide extends LinearOpMode {
         intake = hardwareMap.get(DcMotor.class, "intake");
         leftShooter = hardwareMap.get(DcMotorEx.class, "leftShooter");
         rightShooter = hardwareMap.get(DcMotorEx.class, "rightShooter");
+        leftShooter.setVelocityPIDFCoefficients(60, 0, 0, 13.2);
+        rightShooter.setVelocityPIDFCoefficients(60, 0, 0, 13.2);
 
         Action trajectory1 = myBot.actionBuilder(new Pose2d(-62.5, -39.5, Math.toRadians(0)))
 
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(45)), Math.toRadians(35))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(35))
                 .build();
                 //shoot after this
 
-        Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(45)))
+        Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
                 .splineToLinearHeading(new Pose2d(-10.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
@@ -61,11 +63,11 @@ public class AutonBlueTVSide extends LinearOpMode {
         Action trajectory4 = myBot.actionBuilder(new Pose2d(-10.5, -47.5, Math.toRadians(270)))
 
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(45)), Math.toRadians(-200))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200))
                 .build();
                 // start shooting stuff
 
-        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(45)))
+        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
                 .splineToLinearHeading(new Pose2d(16.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
@@ -80,11 +82,11 @@ public class AutonBlueTVSide extends LinearOpMode {
         Action trajectory7 = myBot.actionBuilder(new Pose2d(16.5, -50.5, Math.toRadians(270)))
 
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(45)), Math.toRadians(-200))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200))
                 .build();
         //start shooting stuff
 
-        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(45)))
+        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
                 .splineToLinearHeading(new Pose2d(40.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
@@ -108,88 +110,61 @@ public class AutonBlueTVSide extends LinearOpMode {
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);
-        sleep(1500);
-        indexer.setPower(0);
+        intake.setPower(-0.5);
+        sleep(1000);
         intake.setPower(-1);
         sleep(600);
-        indexer.setPower(-1);
-        sleep(100);
-        intake.setPower(-0.2);
-        sleep(1800);
-        indexer.setPower(0);
-        intake.setPower(-1);
-        sleep(600);
-        indexer.setPower(-1);
-        sleep(100);
-        intake.setPower(-0.2);
-        sleep(2100);
         indexer.setPower(0);
         intake.setPower(0);
 
-//        leftShooter.setVelocity(0);
-//        rightShooter.setVelocity(-0);
+
 
         Actions.runBlocking(trajectory2);
         // start intaking motor
         intake.setPower(-1);
-
+        indexer.setPower(0.25);
         Actions.runBlocking(trajectory3);
         // stop intaking motor
         intake.setPower(0);
+        indexer.setPower(0);
         Actions.runBlocking(trajectory4);
         //shoot 3 balls
         indexer.setPower(-1);
-        sleep(1500);
-        indexer.setPower(0);
+        intake.setPower(-0.5);
+        sleep(1000);
         intake.setPower(-1);
-        sleep(600);
-        indexer.setPower(-1);
-        sleep(100);
-        intake.setPower(-0.2);
-        sleep(1800);
+        sleep(500);
         indexer.setPower(0);
-        intake.setPower(-1);
-        sleep(600);
-        indexer.setPower(-1);
-        sleep(100);
-        intake.setPower(-0.2);
-        sleep(2100);
-        indexer.setPower(0);
-        intake.setPower(-0 );
+        intake.setPower(0);
 
         Actions.runBlocking(trajectory5);
         //start intaking motor
         intake.setPower(-1);
+        indexer.setPower(0.25);
         Actions.runBlocking(trajectory6);
         //stop intaking motor
         intake.setPower(0);
+        indexer.setPower(0);
         Actions.runBlocking(trajectory7);
         // shooting
-        leftShooter.setVelocity(957);
-        rightShooter.setVelocity(-957);
         indexer.setPower(-1);
-
-
-        sleep(2700);
-
+        intake.setPower(-0.5);
+        sleep(1000);
         intake.setPower(-1);
-        sleep(700);
-        intake.setPower(0);
-        sleep(700);
-        intake.setPower(-1);
-        sleep(700);
+        sleep(500);
+        indexer.setPower(0);
         intake.setPower(0);
 
         leftShooter.setVelocity(0);
-        rightShooter.setVelocity(-0);
-        indexer.setPower(0);
-
+        rightShooter.setVelocity(0);
         Actions.runBlocking(trajectory8);
         //start intaking motor
         intake.setPower(-1);
+        indexer.setPower(0.25);
         Actions.runBlocking(trajectory9);
         //stop intaking motor
         intake.setPower(0);
+        indexer.setPower(0);
         Actions.runBlocking(trajectory10);
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
     }
