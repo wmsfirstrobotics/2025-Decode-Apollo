@@ -100,8 +100,8 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         waitForStart();
 
-        leftShooter.setVelocity(957);
-        rightShooter.setVelocity(-957);
+        leftShooter.setVelocity(945);
+        rightShooter.setVelocity(-945);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);

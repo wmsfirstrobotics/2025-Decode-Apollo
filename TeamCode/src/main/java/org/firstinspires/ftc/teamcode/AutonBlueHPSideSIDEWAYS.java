@@ -7,9 +7,9 @@ import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "AutonBlue HP Side", group = "Autonomous")
+@Autonomous(name = "Blue HP Side (Sideways)", group = "Autonomous")
 
-public class AutonBlueHPSide extends LinearOpMode {
+public class AutonBlueHPSideSIDEWAYS extends LinearOpMode {
 
 
 
@@ -19,7 +19,7 @@ public class AutonBlueHPSide extends LinearOpMode {
 
         Action trajectory = myBot.actionBuilder(new Pose2d(62.5, -18, Math.toRadians(180)))
 
-                .strafeTo(new Vector2d(75, -18))
+                .strafeTo(new Vector2d(75, -34))
 
                 .build();
         waitForStart();
