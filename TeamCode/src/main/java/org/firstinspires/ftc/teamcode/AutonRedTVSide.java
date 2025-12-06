@@ -76,16 +76,16 @@ public class AutonRedTVSide extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-43)))
 
-                .splineToLinearHeading(new Pose2d(39.5, 27, Math.toRadians(-270)), Math.toRadians(-270))
+                .splineToLinearHeading(new Pose2d(42.5, 27, Math.toRadians(-270)), Math.toRadians(-270))
                 .build();
                 //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(39.5, 27, Math.toRadians(-270)))
-                .strafeTo(new Vector2d(39.5, 50.5), new TranslationalVelConstraint(13))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(42.5, 27, Math.toRadians(-270)))
+                .strafeTo(new Vector2d(42.5, 50.5), new TranslationalVelConstraint(13))
                 .build();
                 //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(30.5, 50.5, Math.toRadians(-270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(42.5, 50.5, Math.toRadians(-270)))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(0, 40, Math.toRadians(-90)), Math.toRadians(90))
                 .build();
