@@ -58,11 +58,11 @@ public class AutonBlueTVSide extends LinearOpMode {
         Action trajectory4 = myBot.actionBuilder(new Pose2d(-10.5, -47.5, Math.toRadians(270)))
 
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(48)), Math.toRadians(-200))
                 .build();
         // start shooting stuff
 
-        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
+        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(48)))
 
                 .splineToLinearHeading(new Pose2d(14.5, -27, Math.toRadians(270)), Math.toRadians(270))
                 .build();
@@ -100,8 +100,8 @@ public class AutonBlueTVSide extends LinearOpMode {
 
         waitForStart();
 
-        leftShooter.setVelocity(945);
-        rightShooter.setVelocity(-945);
+        leftShooter.setVelocity(935);
+        rightShooter.setVelocity(-935);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);

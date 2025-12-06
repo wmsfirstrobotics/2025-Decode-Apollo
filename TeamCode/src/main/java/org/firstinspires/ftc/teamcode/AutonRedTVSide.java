@@ -51,23 +51,23 @@ public class AutonRedTVSide extends LinearOpMode {
         Action trajectory4 = myBot.actionBuilder(new Pose2d(-10.5, 47.5, Math.toRadians(-275)))
 
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-47)), Math.toRadians(-200))
+                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-45)), Math.toRadians(-200))
                 .build();
                 // start shooting stuff
 
-        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-47)))
+        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-45)))
 
-                .splineToLinearHeading(new Pose2d(14.5, 27, Math.toRadians(-270)), Math.toRadians(-270))
+                .splineToLinearHeading(new Pose2d(15, 27, Math.toRadians(-270)), Math.toRadians(-270))
                 .build();
 //start intaking motor
 
-        Action trajectory6 = myBot.actionBuilder(new Pose2d(14.5, 27, Math.toRadians(-270)))
+        Action trajectory6 = myBot.actionBuilder(new Pose2d(15, 27, Math.toRadians(-270)))
 
-                .strafeTo(new Vector2d(14.5, 50.5), new TranslationalVelConstraint(13))
+                .strafeTo(new Vector2d(15, 50.5), new TranslationalVelConstraint(13))
                 .build();
         //stop intaking motor
 
-        Action trajectory7 = myBot.actionBuilder(new Pose2d(14.5, 50.5, Math.toRadians(-270)))
+        Action trajectory7 = myBot.actionBuilder(new Pose2d(15, 50.5, Math.toRadians(-270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-43)), Math.toRadians(-200))
@@ -93,8 +93,8 @@ public class AutonRedTVSide extends LinearOpMode {
 
         waitForStart();
 
-        leftShooter.setVelocity(945);
-        rightShooter.setVelocity(-945);
+        leftShooter.setVelocity(925);
+        rightShooter.setVelocity(-925);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);
