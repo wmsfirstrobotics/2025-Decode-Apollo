@@ -78,17 +78,17 @@ public class LocalizationTest extends LinearOpMode {
                 frontRight.setPower(((y - x) - rx) / denominator);
                 backRight.setPower(((y + x) - rx) / denominator);
                 // Shooters
-                if (gamepad2.b_was_pressed()) {
+                if (gamepad2.bWasPressed()) {
                     shooterOn = !shooterOn;
                 }
                 if (shooterOn) {
-                    if (gamepad2.dpad_up_was_pressed()) {
+                    if (gamepad2.dpadUpWasPressed()) {
                         targetRightRPM = -1172.5;
                         targetLeftRPM = 1172.5;
-                    } else if (gamepad2.dpad_down_was_pressed()) {
+                    } else if (gamepad2.dpadDownWasPressed()) {
                         targetRightRPM = -957;
                         targetLeftRPM = 957;
-                    } else if (gamepad2.left_stick_button_was_pressed()) {
+                    } else if (gamepad2.leftStickButtonWasPressed()) {
                         targetRightRPM = -1075;
                         targetLeftRPM = 1075;
                     }
@@ -99,13 +99,13 @@ public class LocalizationTest extends LinearOpMode {
                     ((DcMotorEx) rightShooter).setVelocity(0);
                 }
                 // Indexer
-                if (gamepad2.a_was_pressed()) {
+                if (gamepad2.aWasPressed()) {
                     indexerOn = !indexerOn;
                 }
                 if (indexerOn) {
-                    if (gamepad1.dpad_left_was_pressed()) {
+                    if (gamepad1.dpadLeftWasPressed()) {
                         targetIndexerPower = -1;
-                    } else if (gamepad1.dpad_right_was_pressed()) {
+                    } else if (gamepad1.dpadRightWasPressed()) {
                         targetIndexerPower = 1;
                     }
                     indexer.setPower(targetIndexerPower);
@@ -113,13 +113,13 @@ public class LocalizationTest extends LinearOpMode {
                     indexer.setPower(0);
                 }
                 // Intake
-                if (gamepad2.y_was_pressed()) {
+                if (gamepad2.yWasPressed()) {
                     intakeOn = !intakeOn;
                 }
                 if (intakeOn) {
-                    if (gamepad2.left_bumper_was_pressed()) {
+                    if (gamepad2.leftBumperWasPressed()) {
                         targetIntakePower = -1;
-                    } else if (gamepad2.right_bumper_was_pressed()) {
+                    } else if (gamepad2.rightBumperWasPressed()) {
                         targetIntakePower = 1;
                     }
                     intake.setPower(targetIntakePower);
