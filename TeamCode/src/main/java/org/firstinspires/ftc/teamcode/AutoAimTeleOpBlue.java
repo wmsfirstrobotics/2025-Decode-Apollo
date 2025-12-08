@@ -6,13 +6,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-import com.qualcomm.hardware.limelightvision.LLResult;
-import com.qualcomm.hardware.limelightvision.LLResultTypes;
-import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
 @TeleOp(name = "Test TeleOp", group = "TeleOp")
-public class AutoAimTeleOp extends LinearOpMode {
+public class AutoAimTeleOpBlue extends LinearOpMode {
 
     private DcMotorEx leftShooter;
     private DcMotorEx rightShooter;
@@ -23,7 +20,6 @@ public class AutoAimTeleOp extends LinearOpMode {
     private DcMotorEx indexer;
     private DcMotorEx intake;
 
-    
 
     @Override
     public void runOpMode() {
@@ -61,7 +57,6 @@ public class AutoAimTeleOp extends LinearOpMode {
 
         ((DcMotorEx) leftShooter).setVelocityPIDFCoefficients(60, 0, 0, 13.2);
         ((DcMotorEx) rightShooter).setVelocityPIDFCoefficients(60, 0, 0, 13.2);
-
 
 
         waitForStart();
