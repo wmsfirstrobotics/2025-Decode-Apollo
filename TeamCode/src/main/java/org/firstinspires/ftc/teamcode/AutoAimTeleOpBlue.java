@@ -200,7 +200,7 @@ public class AutoAimTeleOpBlue extends LinearOpMode {
                 telemetry.addData("frontLeft", frontLeft.getCurrentPosition());
 
                 telemetry.addData("LShooterVel", ((DcMotorEx) leftShooter).getVelocity());
-                telemetry.addData("rShooterVel", ((DcMotorEx) rightShooter).getVelocity());
+                telemetry.addData("RShooterVel", ((DcMotorEx) rightShooter).getVelocity());
 
 
                 telemetry.update();
