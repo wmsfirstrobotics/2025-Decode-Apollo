@@ -16,11 +16,24 @@ public class AutonBlueMM {
                 .setConstraints(100, 80, Math.toRadians(180), Math.toRadians(180), 15)
                 .build();
 
-        myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
-                        .setTangent(270)
-                .splineToLinearHeading(new Pose2d(39.5, -27, Math.toRadians(270)), Math.toRadians(0))
+        myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(-62.5, -36.5, Math.toRadians(0)))
 
-
+                .splineToSplineHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(0))
+                .waitSeconds(2)
+                .splineToLinearHeading(new Pose2d(-11.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .strafeTo(new Vector2d(-11.5, -47.5))
+                .setReversed(true)
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
+                .waitSeconds(2)
+                .splineToLinearHeading(new Pose2d(11.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .strafeTo(new Vector2d(11.5, -47.5))
+                .setReversed(true)
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(54)), Math.toRadians(-200))
+                .waitSeconds(2)
+                .splineToLinearHeading(new Pose2d(35.5, -27, Math.toRadians(270)), Math.toRadians(270))
+                .strafeTo(new Vector2d(35.5, -47.5))
+                .setReversed(true)
+                .splineToLinearHeading(new Pose2d(0, -40, Math.toRadians(90)), Math.toRadians(90))
                 .build());
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_DECODE_JUICE_DARK)
