@@ -19,8 +19,8 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
     private DcMotorEx leftShooter;
     private DcMotorEx rightShooter;
 
-    private double speed = 80;
-    private double intakeSpeed = 16.7;
+    private double speed = 40;
+    private double intakeSpeed = 13.67;
 
     @Override
     public void runOpMode() throws InterruptedException {
