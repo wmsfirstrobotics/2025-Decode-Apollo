@@ -39,21 +39,22 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
                 .build();
         //shoot after this
 
-        Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(-8.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+        Action trajectory2new = myBot.actionBuilder(new Pose2d(-8.5, -27, Math.toRadians(270)))
+                .splineToSplineHeading(new Pose2d(-8.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToSplineHeading(new Pose2d(-8.5, -50.5, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(intakeSpeed))
                 .build();
-        // start intaking motor
+
 
         Action trajectory3 = myBot.actionBuilder(new Pose2d(-8.5, -27, Math.toRadians(270)))
-
-                .strafeTo(new Vector2d(-8.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
                 .strafeTo(new Vector2d(1, -50.5), new TranslationalVelConstraint(speed))
                 .strafeTo(new Vector2d(1, -53.5), new TranslationalVelConstraint(speed))
                 .build();
         // stop intaking motor
 
-        Action trajectory4 = myBot.actionBuilder(new Pose2d(0, -53, Math.toRadians(270)))
+
+
+        Action trajectory4 = myBot.actionBuilder(new Pose2d(1, -53.5, Math.toRadians(270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(48)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
@@ -116,12 +117,12 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         sleep(900);
         intake.setPower(-1);
         sleep(700);
-        indexer.setPower(0);
-        intake.setPower(0);
+//        indexer.setPower(0);
+//        intake.setPower(0);
 
 
 
-        Actions.runBlocking(trajectory2);
+//        Actions.runBlocking(trajectory2);
         // start intaking motor
         intake.setPower(-1);
         indexer.setPower(0.25);
