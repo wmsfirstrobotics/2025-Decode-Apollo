@@ -96,8 +96,8 @@ public class AutoAimTeleOpBlue extends LinearOpMode {
 
                 if (shooterOn) {
                     if (gamepad2.dpadUpWasPressed()) {
-                        targetRightRPM = -1172.5;
-                        targetLeftRPM = 1172.5;
+                        targetRightRPM = -1000;
+                        targetLeftRPM = 1000;
 
                     } else if (gamepad2.dpadDownWasPressed()) {
                         targetRightRPM = -957;
