@@ -41,19 +41,19 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(-10.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-8.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         // start intaking motor
 
-        Action trajectory3 = myBot.actionBuilder(new Pose2d(-10.5, -27, Math.toRadians(270)))
+        Action trajectory3 = myBot.actionBuilder(new Pose2d(-8.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(-10.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
-                .strafeTo(new Vector2d(0, -50.5), new TranslationalVelConstraint(speed))
-                .strafeTo(new Vector2d(0, -53), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(-8.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
+                .strafeTo(new Vector2d(1, -50.5), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(1, -53.5), new TranslationalVelConstraint(speed))
                 .build();
         // stop intaking motor
 
-        Action trajectory4 = myBot.actionBuilder(new Pose2d(-10.5, -47.5, Math.toRadians(270)))
+        Action trajectory4 = myBot.actionBuilder(new Pose2d(0, -53, Math.toRadians(270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(48)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
@@ -61,18 +61,18 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         // start shooting stuff
 
         Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(48)))
-
-                .splineToLinearHeading(new Pose2d(14.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                //.setTangent(Math.toRadians(315))
+                .splineToLinearHeading(new Pose2d(17.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
 //start intaking motor
 
-        Action trajectory6 = myBot.actionBuilder(new Pose2d(14.5, -27, Math.toRadians(270)))
+        Action trajectory6 = myBot.actionBuilder(new Pose2d(17.5, -27, Math.toRadians(270)))
 
-                .strafeTo(new Vector2d(14.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
+                .strafeTo(new Vector2d(17.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //stop intaking motor
 
-        Action trajectory7 = myBot.actionBuilder(new Pose2d(14.5, -50.5, Math.toRadians(270)))
+        Action trajectory7 = myBot.actionBuilder(new Pose2d(17.5, -50.5, Math.toRadians(270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
@@ -90,13 +90,13 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
                 .build();
         //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(30.5, -50.5, Math.toRadians(270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(39.5, -50.5, Math.toRadians(270)))
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(47)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-18.5, -28.5, Math.toRadians(45)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
-        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
-                .strafeTo(new Vector2d(7, -33.5), new TranslationalVelConstraint(speed))
+        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, -28.5, Math.toRadians(45)))
+                .strafeTo(new Vector2d(12, -38.5), new TranslationalVelConstraint(speed))
                 .build();
 
         waitForStart();
@@ -173,5 +173,6 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         rightShooter.setVelocity(0);
         Actions.runBlocking(trajectory11beta);
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
+
     }
 }
