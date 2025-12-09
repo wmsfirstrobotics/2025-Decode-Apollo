@@ -19,7 +19,7 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
     private DcMotorEx leftShooter;
     private DcMotorEx rightShooter;
 
-    private double speed = 100;
+    private double speed = 80;
     private double intakeSpeed = 16.7;
 
     @Override
@@ -41,16 +41,13 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(-8.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-                .build();
-        // start intaking motor
-
-        Action trajectory3 = myBot.actionBuilder(new Pose2d(-8.5, -27, Math.toRadians(270)))
-
+                .splineToSplineHeading(new Pose2d(-8.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .strafeTo(new Vector2d(-8.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
                 .strafeTo(new Vector2d(1, -50.5), new TranslationalVelConstraint(speed))
                 .strafeTo(new Vector2d(1, -53.5), new TranslationalVelConstraint(speed))
                 .build();
+        // start intaking motor
+
         // stop intaking motor
 
         Action trajectory4 = myBot.actionBuilder(new Pose2d(0, -53, Math.toRadians(270)))
@@ -62,15 +59,10 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(48)))
                 //.setTangent(Math.toRadians(315))
-                .splineToLinearHeading(new Pose2d(17.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-                .build();
-//start intaking motor
-
-        Action trajectory6 = myBot.actionBuilder(new Pose2d(17.5, -27, Math.toRadians(270)))
-
+                .splineToSplineHeading(new Pose2d(17.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .strafeTo(new Vector2d(17.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
                 .build();
-        //stop intaking motor
+//start intaking motor
 
         Action trajectory7 = myBot.actionBuilder(new Pose2d(17.5, -50.5, Math.toRadians(270)))
 
@@ -81,14 +73,11 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
 
-                .splineToLinearHeading(new Pose2d(39.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToSplineHeading(new Pose2d(39.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(39.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(39.5, -27, Math.toRadians(270)))
-                .strafeTo(new Vector2d(39.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
-                .build();
-        //stop intaking motor
 
         Action trajectory10 = myBot.actionBuilder(new Pose2d(39.5, -50.5, Math.toRadians(270)))
                 .setReversed(true)
@@ -110,16 +99,14 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         sleep(900);
         intake.setPower(-1);
         sleep(700);
-        indexer.setPower(0);
-        intake.setPower(0);
 
+        intake.setPower(-1);
+        indexer.setPower(0.25);
 
 
         Actions.runBlocking(trajectory2);
         // start intaking motor
-        intake.setPower(-1);
-        indexer.setPower(0.25);
-        Actions.runBlocking(trajectory3);
+
         // stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);
@@ -130,14 +117,12 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         sleep(900);
         intake.setPower(-1);
         sleep(700);
-        indexer.setPower(0);
-        intake.setPower(0);
 
-        Actions.runBlocking(trajectory5);
-        //start intaking motor
         intake.setPower(-1);
         indexer.setPower(0.25);
-        Actions.runBlocking(trajectory6);
+        Actions.runBlocking(trajectory5);
+        //start intaking motor
+
         //stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);
@@ -148,15 +133,12 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         sleep(900);
         intake.setPower(-1);
         sleep(700);
-        indexer.setPower(0);
-        intake.setPower(0);
 
-
-        Actions.runBlocking(trajectory8);
-        //start intaking motor
         intake.setPower(-1);
         indexer.setPower(0.25);
-        Actions.runBlocking(trajectory9);
+        Actions.runBlocking(trajectory8);
+        //start intaking motor
+
         //stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);

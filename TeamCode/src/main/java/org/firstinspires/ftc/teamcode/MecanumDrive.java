@@ -63,17 +63,17 @@ public final class MecanumDrive {
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
 
         // drive model parameters
-        public double inPerTick = 0.022491271;
-        public double lateralInPerTick = 0.0228826566;
+        public double inPerTick = 0.0254298643;
+        public double lateralInPerTick = 0.0276465958;
         public double trackWidthTicks = 450;
 
         // feedforward parameters (in tick units)
-        public double kS = 1.149283909652012;
-        public double kV = 0.004345561937897749;
+        public double kS = 1.5861912981187105;
+        public double kV = 0.004227543196798249;
         public double kA = 0.001;
 
         // path profile parameters (in inches)
-        public double maxWheelVel = 60;
+        public double maxWheelVel = 50;
         public double minProfileAccel = -30;
         public double maxProfileAccel = 60;
 
