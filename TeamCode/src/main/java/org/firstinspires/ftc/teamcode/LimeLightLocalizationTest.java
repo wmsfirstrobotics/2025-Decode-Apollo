@@ -137,21 +137,17 @@ public class LimeLightLocalizationTest extends OpMode {
             LLResultTypes.FiducialResult tag = tags.get(0);
             distance = tag.getRobotPoseTargetSpace().getPosition().z;
 
-            telemetry.addData("Turn Power", turnPower);
-            telemetry.addData("Distance (m)", distance);
-            telemetry.addData("Tag ID", tag.getFiducialId());
+
 
             // Values are calculated from specific equations. TODO: must tune
             targetLeftRPM = 967.9 * distance / sqrt(1.4142 * distance + 0.7305);
             targetRightRPM = -967.9 * distance / sqrt(1.4142 * distance + 0.7305);
 
-            telemetry.addData("targetLeftRPM", targetLeftRPM);
-            telemetry.addData("targetRightRPM", targetRightRPM);
+
 
             ((DcMotorEx) leftShooter).setVelocity(targetLeftRPM);
             ((DcMotorEx) rightShooter).setVelocity(targetRightRPM);
 
-            telemetry.update();
 
         } else {
             // Drive
@@ -249,6 +245,11 @@ public class LimeLightLocalizationTest extends OpMode {
             }
         }
 
+        telemetry.addData("Distance", distance);
+        telemetry.addData("targetLeftRPM", targetLeftRPM);
+        telemetry.addData("targetRightRPM", targetRightRPM);
+        telemetry.addData("Turn Power", turnPower);
+        telemetry.addData("Distance (m)", distance);
 
         // IntakeTel
         if (intakeOn == false) {
