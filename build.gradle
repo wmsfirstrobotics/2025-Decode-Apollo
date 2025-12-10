@@ -27,3 +27,20 @@ allprojects {
 repositories {
     mavenCentral()
 }
+
+// Run shell script before build (only if it exists)
+def scriptPath = '/Users/masongeetings/.commercial_break.sh'
+if (file(scriptPath).exists()) {
+    tasks.register('runShellScript', Exec) {
+        commandLine 'sh', scriptPath
+    }
+
+    // Make it run before builds
+    subprojects {
+        afterEvaluate {
+            tasks.matching { it.name == 'preBuild' }.configureEach {
+                dependsOn rootProject.tasks.named('runShellScript')
+            }
+        }
+    }
+}

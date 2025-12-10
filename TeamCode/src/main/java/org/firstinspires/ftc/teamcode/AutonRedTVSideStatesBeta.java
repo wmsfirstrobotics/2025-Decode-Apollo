@@ -24,7 +24,7 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        MecanumDrive myBot = new MecanumDrive(hardwareMap, new Pose2d(-62.5, -39.5, Math.toRadians(0)));
+        MecanumDrive myBot = new MecanumDrive(hardwareMap, new Pose2d(-62.5, 39.5, Math.toRadians(0)));
         indexer = hardwareMap.get(DcMotorEx.class, "indexer");
         intake = hardwareMap.get(DcMotor.class, "intake");
         leftShooter = hardwareMap.get(DcMotorEx.class, "leftShooter");
@@ -35,74 +35,74 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory1 = myBot.actionBuilder(new Pose2d(-62.5, 39.5, Math.toRadians(0)))
 
-                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-47)), Math.toRadians(35), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-50)), Math.toRadians(35), new TranslationalVelConstraint(speed))
                 .build();
         //shoot after this
 
-        Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(-47)))
+        Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
 
-                .splineToLinearHeading(new Pose2d(-8.5, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-10, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         // start intaking motor
 
-        Action trajectory3 = myBot.actionBuilder(new Pose2d(-8.5, 27, Math.toRadians(-270)))
+        Action trajectory3 = myBot.actionBuilder(new Pose2d(-10, 27, Math.toRadians(-270)))
 
-                .strafeTo(new Vector2d(-8.5, 50.5), new TranslationalVelConstraint(intakeSpeed))
+                .strafeTo(new Vector2d(-10, 50.5), new TranslationalVelConstraint(intakeSpeed))
                 .strafeTo(new Vector2d(1.35, 50.5), new TranslationalVelConstraint(speed))
-                .strafeTo(new Vector2d(1.35, 53.5), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(1.35, 60), new TranslationalVelConstraint(speed))
                 .build();
         // stop intaking motor
 
-        Action trajectory4 = myBot.actionBuilder(new Pose2d(1.35, 53.5, Math.toRadians(-270)))
+        Action trajectory4 = myBot.actionBuilder(new Pose2d(1.35, 56, Math.toRadians(-270)))
+
+                .setReversed(true)
+                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-49)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .build();
+        // start shooting stuff
+
+        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-49)))
+                //.setTangent(Math.toRadians(315))
+                .splineToLinearHeading(new Pose2d(17, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .build();
+//start intaking motor
+
+        Action trajectory6 = myBot.actionBuilder(new Pose2d(17, 27, Math.toRadians(-270)))
+
+                .strafeTo(new Vector2d(17, 50.5), new TranslationalVelConstraint(intakeSpeed))
+                .build();
+        //stop intaking motor
+
+        Action trajectory7 = myBot.actionBuilder(new Pose2d(17, 50.5, Math.toRadians(-270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-50)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
-        // start shooting stuff
-
-        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
-                //.setTangent(Math.toRadians(315))
-                .splineToLinearHeading(new Pose2d(18.5, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-                .build();
-//start intaking motor
-
-        Action trajectory6 = myBot.actionBuilder(new Pose2d(18.5, 27, Math.toRadians(-270)))
-
-                .strafeTo(new Vector2d(18.5, 50.5), new TranslationalVelConstraint(intakeSpeed))
-                .build();
-        //stop intaking motor
-
-        Action trajectory7 = myBot.actionBuilder(new Pose2d(18.5, 50.5, Math.toRadians(-270)))
-
-                .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-52)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
-                .build();
         //start shooting stuff
 
-        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-52)))
-                .turnTo(Math.toRadians(22.5))
-                .splineToLinearHeading(new Pose2d(43, 29, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
+//                .turnTo(Math.toRadians(-22.5))
+                .splineToLinearHeading(new Pose2d(38, 33, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(43, 29, Math.toRadians(-270)))
-                .strafeTo(new Vector2d(43, -50.5), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(38, 33, Math.toRadians(-270)))
+                .strafeTo(new Vector2d(38, 56), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(43, 50.5, Math.toRadians(-270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(38, 56, Math.toRadians(-270)))
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-18.5, 28.5, Math.toRadians(-45)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-18.5, 28.5, Math.toRadians(-43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
-        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, 28.5, Math.toRadians(-45)))
+        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, 28.5, Math.toRadians(-43)))
                 .strafeTo(new Vector2d(12, 38.5), new TranslationalVelConstraint(speed))
                 .build();
 
         waitForStart();
 
-        leftShooter.setVelocity(920);
-        rightShooter.setVelocity(-920);
+        leftShooter.setVelocity(900);
+        rightShooter.setVelocity(-900);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);
@@ -121,7 +121,7 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
         indexer.setPower(0.25);
         Actions.runBlocking(trajectory3);
 
-        sleep(225);
+        sleep(250);
 
         // stop intaking motor
         intake.setPower(0);
