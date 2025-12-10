@@ -6,10 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-import com.qualcomm.hardware.limelightvision.Limelight3A;
-
-@TeleOp(name = "Test TeleOp", group = "TeleOp")
-public class AutoAimTeleOpBlue extends LinearOpMode {
+@TeleOp(name = "LIMELIGHT LTEST BETA", group = "TeleOp")
+public class LLightLocalizatonTestBETA extends LinearOpMode {
 
     private DcMotorEx leftShooter;
     private DcMotorEx rightShooter;

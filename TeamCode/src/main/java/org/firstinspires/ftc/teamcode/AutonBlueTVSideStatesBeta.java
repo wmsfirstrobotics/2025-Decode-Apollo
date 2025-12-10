@@ -29,8 +29,8 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         intake = hardwareMap.get(DcMotor.class, "intake");
         leftShooter = hardwareMap.get(DcMotorEx.class, "leftShooter");
         rightShooter = hardwareMap.get(DcMotorEx.class, "rightShooter");
-        leftShooter.setVelocityPIDFCoefficients(60, 0, 0, 13.2);
-        rightShooter.setVelocityPIDFCoefficients(60, 0, 0, 13.2);
+        leftShooter.setVelocityPIDFCoefficients(40, 0, 0, 13.2);
+        rightShooter.setVelocityPIDFCoefficients(40, 0, 0, 13.2);
 
 
         Action trajectory1 = myBot.actionBuilder(new Pose2d(-62.5, -39.5, Math.toRadians(0)))
@@ -48,69 +48,66 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         Action trajectory3 = myBot.actionBuilder(new Pose2d(-8.5, -27, Math.toRadians(270)))
 
                 .strafeTo(new Vector2d(-8.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
-                .strafeTo(new Vector2d(1, -50.5), new TranslationalVelConstraint(speed))
-                .strafeTo(new Vector2d(1, -53.5), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(1.35, -50.5), new TranslationalVelConstraint(speed))
+                .strafeTo(new Vector2d(1.35, -53.5), new TranslationalVelConstraint(speed))
                 .build();
         // stop intaking motor
 
-        Action trajectory4 = myBot.actionBuilder(new Pose2d(0, -53, Math.toRadians(270)))
+        Action trajectory4 = myBot.actionBuilder(new Pose2d(1.35, -53.5, Math.toRadians(270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(50)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         // start shooting stuff
 
-        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(48)))
-                .setTangent(Math.toRadians(22.5))
-                .splineToSplineHeading(new Pose2d(24.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-                .strafeTo(new Vector2d(24.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory5 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(50)))
+                //.setTangent(Math.toRadians(315))
+                .splineToLinearHeading(new Pose2d(18.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
 //start intaking motor
 
+        Action trajectory6 = myBot.actionBuilder(new Pose2d(18.5, -27, Math.toRadians(270)))
+
+                .strafeTo(new Vector2d(18.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
+                .build();
         //stop intaking motor
 
-        Action trajectory7 = myBot.actionBuilder(new Pose2d(24.5, -50.5, Math.toRadians(270)))
+        Action trajectory7 = myBot.actionBuilder(new Pose2d(18.5, -50.5, Math.toRadians(270)))
 
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-19.5, -27.5, Math.toRadians(49)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-23.5, -23.5, Math.toRadians(52)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //start shooting stuff
 
-//        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(47)))
-//
-//                .splineToLinearHeading(new Pose2d(39.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-//                .build();
-//        //start intaking motor
-//
-//        Action trajectory9 = myBot.actionBuilder(new Pose2d(39.5, -27, Math.toRadians(270)))
-//                .strafeTo(new Vector2d(39.5, -50.5), new TranslationalVelConstraint(intakeSpeed))
-//                .build();
-//        //stop intaking motor
-
-        Action trajectory8new = myBot.actionBuilder(new Pose2d(-19.5, -27.5, Math.toRadians(47)))
-                .setTangent(Math.toRadians(345))
-                .splineToSplineHeading(new Pose2d(51.5, -27, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
-                .splineToSplineHeading(new Pose2d(51.5, -50.5, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, -23.5, Math.toRadians(52)))
+                .turnTo(Math.toRadians(22.5))
+                .splineToLinearHeading(new Pose2d(43, -29, Math.toRadians(270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
+        //start intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(51.5, -50.5, Math.toRadians(270)))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(43, -29, Math.toRadians(270)))
+                .strafeTo(new Vector2d(43, -50.5), new TranslationalVelConstraint(intakeSpeed))
+                .build();
+        //stop intaking motor
+
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(43, -50.5, Math.toRadians(270)))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-18.5, -28.5, Math.toRadians(45)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
         Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, -28.5, Math.toRadians(45)))
-                .strafeTo(new Vector2d(12, -58.5))
+                .strafeTo(new Vector2d(12, -38.5), new TranslationalVelConstraint(speed))
                 .build();
 
         waitForStart();
 
-        leftShooter.setVelocity(925);
-        rightShooter.setVelocity(-925);
+        leftShooter.setVelocity(920);
+        rightShooter.setVelocity(-920);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(900);
+        sleep(435);
         intake.setPower(-1);
         sleep(700);
         indexer.setPower(0);
@@ -123,6 +120,9 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         intake.setPower(-1);
         indexer.setPower(0.25);
         Actions.runBlocking(trajectory3);
+
+        sleep(225);
+
         // stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);
@@ -130,16 +130,17 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         //shoot 3 balls
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(900);
+        sleep(435);
         intake.setPower(-1);
         sleep(700);
-        intake.setPower(-1);
-        indexer.setPower(0.25);
+        indexer.setPower(0);
+        intake.setPower(0);
 
         Actions.runBlocking(trajectory5);
         //start intaking motor
-
-//        Actions.runBlocking(trajectory6);
+        intake.setPower(-1);
+        indexer.setPower(0.25);
+        Actions.runBlocking(trajectory6);
         //stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);
@@ -147,26 +148,25 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         // shooting
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(900);
+        sleep(435);
         intake.setPower(-1);
         sleep(700);
-//        indexer.setPower(0);
-//        intake.setPower(0);
+        indexer.setPower(0);
+        intake.setPower(0);
 
 
-//        Actions.runBlocking(trajectory8);
+        Actions.runBlocking(trajectory8);
         //start intaking motor
         intake.setPower(-1);
         indexer.setPower(0.25);
-//        Actions.runBlocking(trajectory9);
-        Actions.runBlocking(trajectory8new);
+        Actions.runBlocking(trajectory9);
         //stop intaking motor
         intake.setPower(0);
         indexer.setPower(0);
         Actions.runBlocking(trajectory10);
         indexer.setPower(-1);
         intake.setPower(-0.5);
-        sleep(900);
+        sleep(435);
         intake.setPower(-1);
         sleep(700);
         indexer.setPower(0);
