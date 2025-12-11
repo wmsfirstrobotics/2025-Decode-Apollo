@@ -55,6 +55,16 @@ public class LimeLightLocalizationTest extends OpMode {
     private int targetIntakePower;
     private int targetIndexerPower;
 
+    // distance constants
+    private double shooterAngle = 45;
+    private double shooterHeight = 0;
+    private double targetHeight = 0;
+    private double gravity = 9.81;
+    private double radius = 0;
+    private double k = 1; // drag 1.45
+    private double Cc = 1; // energy lost 0.45
+    private double S = 1; // slip 0.5
+
     LLResultTypes.FiducialResult tag;
 
     @Override
@@ -161,8 +171,8 @@ public class LimeLightLocalizationTest extends OpMode {
 
         if (shooterOn) {
             if (distance != -1) {
-                targetLeftRPM = 96.79 * distance / sqrt(1.4142 * distance + 0.7305);
-                targetRightRPM = -96.79 * distance / sqrt(1.4142 * distance + 0.7305);
+                targetLeftRPM = calculateRPM(distance);
+                targetRightRPM = -calculateRPM(distance);
 
             } else if (gamepad2.dpadUpWasPressed()) {
                 targetRightRPM = -1172.5;
@@ -284,5 +294,9 @@ public class LimeLightLocalizationTest extends OpMode {
         double scale = 30665.95;
 
         return (scale * 0.394 / (ta * 100));
+    }
+
+    public double calculateRPM(double distance) {
+        return 0.0;
     }
 }
