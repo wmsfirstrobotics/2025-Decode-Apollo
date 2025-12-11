@@ -92,10 +92,10 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory10 = myBot.actionBuilder(new Pose2d(43, -50.5, Math.toRadians(270)))
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-18.5, -28.5, Math.toRadians(45)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-18.5, -28.5, Math.toRadians(43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
-        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, -28.5, Math.toRadians(45)))
+        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, -28.5, Math.toRadians(43)))
                 .strafeTo(new Vector2d(12, -38.5), new TranslationalVelConstraint(speed))
                 .build();
 
@@ -121,7 +121,7 @@ public class AutonBlueTVSideStatesBeta extends LinearOpMode {
         indexer.setPower(0.25);
         Actions.runBlocking(trajectory3);
 
-        sleep(225);
+        sleep(275);
 
         // stop intaking motor
         intake.setPower(0);

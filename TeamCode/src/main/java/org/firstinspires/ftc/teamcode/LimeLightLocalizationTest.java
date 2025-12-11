@@ -140,7 +140,8 @@ public class LimeLightLocalizationTest extends OpMode {
 
             rx = -turnPower;
 
-            distance = getDistance(llResult.getTa());
+//            distance = getDistance(llResult.getTa());
+            distance = -1;
 
         } else {
             rx = -gamepad1.right_stick_x;
