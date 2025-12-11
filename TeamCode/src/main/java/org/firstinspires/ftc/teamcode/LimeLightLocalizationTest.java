@@ -291,9 +291,9 @@ public class LimeLightLocalizationTest extends OpMode {
     }
 
     public double getDistance(double ta) {
-        double scale = 30665.95;
+        double scale = 1029.201;
 
-        return (scale * 0.394 / (ta * 100));
+        return Math.pow(scale / ta, 0.6043);
     }
 
     public double calculateRPM(double distance) {
