@@ -297,6 +297,13 @@ public class LimeLightLocalizationTest extends OpMode {
     }
 
     public double calculateRPM(double distance) {
-        return 0.0;
+        double factor = (60 * k) / (2 * Math.PI * radius * S * Cc);
+
+        double root_numerator = gravity * Math.pow(distance, 2);
+        double root_denominator = 2 * Math.pow(Math.cos(shooterAngle), 2) * (distance * Math.tan(shooterAngle) - (targetHeight - shooterHeight));
+
+        double root = Math.sqrt(root_numerator / root_denominator);
+
+        return factor * root;
     }
 }
