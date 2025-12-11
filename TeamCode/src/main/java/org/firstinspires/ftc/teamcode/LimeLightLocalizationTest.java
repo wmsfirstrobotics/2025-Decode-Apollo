@@ -55,8 +55,6 @@ public class LimeLightLocalizationTest extends OpMode {
     private int targetIntakePower;
     private int targetIndexerPower;
 
-    private List<LLResultTypes.FiducialResult> tags;
-
     LLResultTypes.FiducialResult tag;
 
     @Override
@@ -122,7 +120,6 @@ public class LimeLightLocalizationTest extends OpMode {
         // if tag && key, set angle to ignore joystick and do LL
 
         if (llResult != null && llResult.isValid() && gamepad1.b) {
-            tags = llResult.getFiducialResults();
 
             Tx = llResult.getTx();
             turnPower = Range.clip(Tx * kP, -1, 1);
