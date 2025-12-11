@@ -19,7 +19,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 import java.util.List;
 
-@TeleOp(name = "AprilTag Limelight tleop", group = "Testing")
+@TeleOp(name = "use this for LL", group = "Testing")
 public class LimeLightLocalizationTest extends OpMode {
     private Limelight3A limelight;
     private IMU imu;
@@ -56,6 +56,8 @@ public class LimeLightLocalizationTest extends OpMode {
     private int targetIndexerPower;
 
     private List<LLResultTypes.FiducialResult> tags;
+
+    LLResultTypes.FiducialResult tag;
 
     @Override
     public void init() {
@@ -108,87 +110,81 @@ public class LimeLightLocalizationTest extends OpMode {
 
     @Override
     public void loop() {
+        // Get LL data
         YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
         limelight.updateRobotOrientation(orientation.getYaw());
         LLResult llResult = limelight.getLatestResult();
 
-        // If sees tag, turn for tag
-        if (llResult != null && llResult.isValid() && gamepad2.right_stick_button) {
+        // Drive
+        y = Math.pow(gamepad1.left_stick_y, 3);
+        x = Math.pow(-gamepad1.left_stick_x * 1.1, 3);
+
+        // if tag && key, set angle to ignore joystick and do LL
+
+        if (llResult != null && llResult.isValid() && gamepad1.b) {
             tags = llResult.getFiducialResults();
 
             Tx = llResult.getTx();
-            turnPower = Range.clip(Tx * kP, -100, 100);
+            turnPower = Range.clip(Tx * kP, -1, 1);
 
             if (turnPower <= deadband && turnPower >= -deadband) {
                 turnPower = 0;
             }
 
-            // Drive
             rx = -turnPower;
 
-            denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(y, x, rx)), 1));
+            distance = getDistance(llResult.getTa());
 
-            frontLeft.setPower(rx);
-            backLeft.setPower(rx);
-            frontRight.setPower(-rx);
-            backRight.setPower(-rx);
+        } else {
+            rx = -gamepad1.right_stick_x;
 
+            distance = -1;
+        }
 
-            LLResultTypes.FiducialResult tag = tags.get(0);
-            distance = tag.getRobotPoseTargetSpace().getPosition().z;
+        denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(y, x, rx)), 1));
 
-
-
-            // Values are calculated from specific equations. TODO: must tune
-            targetLeftRPM = 967.9 * distance / sqrt(1.4142 * distance + 0.7305);
-            targetRightRPM = -967.9 * distance / sqrt(1.4142 * distance + 0.7305);
+        frontLeft.setPower((y + x + rx) / denominator);
+        backLeft.setPower(((y - x) + rx) / denominator);
+        frontRight.setPower(((y - x) - rx) / denominator);
+        backRight.setPower(((y + x) - rx) / denominator);
 
 
+        // process shooting/intaking/indexing
 
+
+
+        // Values are calculated from specific equations. TODO: must tune
+
+
+
+        // Shooters
+        if (gamepad2.bWasPressed()) {
+            shooterOn = !shooterOn;
+        }
+
+        if (shooterOn) {
+            if (distance != -1) {
+                targetLeftRPM = 96.79 * distance / sqrt(1.4142 * distance + 0.7305);
+                targetRightRPM = -96.79 * distance / sqrt(1.4142 * distance + 0.7305);
+
+            } else if (gamepad2.dpadUpWasPressed()) {
+                targetRightRPM = -1172.5;
+                targetLeftRPM = 1172.5;
+
+            } else if (gamepad2.dpadDownWasPressed()) {
+                targetRightRPM = -957;
+                targetLeftRPM = 957;
+
+            } else if (gamepad2.leftStickButtonWasPressed()) {
+                targetRightRPM = -1075;
+                targetLeftRPM = 1075;
+            }
             ((DcMotorEx) leftShooter).setVelocity(targetLeftRPM);
             ((DcMotorEx) rightShooter).setVelocity(targetRightRPM);
 
-
         } else {
-            // Drive
-            y = gamepad1.left_stick_y;
-            x = -(gamepad1.left_stick_x * 1.1);
-            rx = -gamepad1.right_stick_x;
-
-            denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(y, x, rx)), 1));
-
-            frontLeft.setPower((y + x + rx) / denominator);
-            backLeft.setPower(((y - x) + rx) / denominator);
-            frontRight.setPower(((y - x) - rx) / denominator);
-            backRight.setPower(((y + x) - rx) / denominator);
-
-
-            // Shooters
-            if (gamepad2.bWasPressed()) {
-                shooterOn = !shooterOn;
-            }
-
-            if (shooterOn) {
-                if (gamepad2.dpadUpWasPressed()) {
-                    targetRightRPM = -1172.5;
-                    targetLeftRPM = 1172.5;
-
-                } else if (gamepad2.dpadDownWasPressed()) {
-                    targetRightRPM = -957;
-                    targetLeftRPM = 957;
-
-                } else if (gamepad2.leftStickButtonWasPressed()) {
-                    targetRightRPM = -1075;
-                    targetLeftRPM = 1075;
-                }
-                ((DcMotorEx) leftShooter).setVelocity(targetLeftRPM);
-                ((DcMotorEx) rightShooter).setVelocity(targetRightRPM);
-
-            } else {
-                ((DcMotorEx) leftShooter).setVelocity(0);
-                ((DcMotorEx) rightShooter).setVelocity(0);
-            }
-
+            ((DcMotorEx) leftShooter).setVelocity(0);
+            ((DcMotorEx) rightShooter).setVelocity(0);
         }
 
         // Indexer
@@ -245,11 +241,11 @@ public class LimeLightLocalizationTest extends OpMode {
             }
         }
 
-        telemetry.addData("Distance", distance);
+        telemetry.addData("ta", llResult.getTa());
         telemetry.addData("targetLeftRPM", targetLeftRPM);
         telemetry.addData("targetRightRPM", targetRightRPM);
         telemetry.addData("Turn Power", turnPower);
-        telemetry.addData("Distance (m)", distance);
+        telemetry.addData("Distance (in)", distance);
 
         // IntakeTel
         if (intakeOn == false) {
@@ -274,10 +270,10 @@ public class LimeLightLocalizationTest extends OpMode {
             telemetry.addData("IndexerDIR", "On; No Target Power");
         }
 
-        telemetry.addData("backLeft", backLeft.getCurrentPosition());
-        telemetry.addData("backRight", backRight.getCurrentPosition());
-        telemetry.addData("frontRight", frontRight.getCurrentPosition());
-        telemetry.addData("frontLeft", frontLeft.getCurrentPosition());
+//        telemetry.addData("backLeft", backLeft.getCurrentPosition());
+//        telemetry.addData("backRight", backRight.getCurrentPosition());
+//        telemetry.addData("frontRight", frontRight.getCurrentPosition());
+//        telemetry.addData("frontLeft", frontLeft.getCurrentPosition());
 
         telemetry.addData("LShooterVel", ((DcMotorEx) leftShooter).getVelocity());
         telemetry.addData("rShooterVel", ((DcMotorEx) rightShooter).getVelocity());
@@ -285,5 +281,11 @@ public class LimeLightLocalizationTest extends OpMode {
 
         telemetry.update();
 
+    }
+
+    public double getDistance(double ta) {
+        double scale = 30665.95;
+
+        return (scale * 0.394 / (ta * 100));
     }
 }
