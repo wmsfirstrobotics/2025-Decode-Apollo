@@ -81,16 +81,16 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
 //                .turnTo(Math.toRadians(-22.5))
-                .splineToLinearHeading(new Pose2d(34.5, 38, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(32.5, 38, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(34.5, 38, Math.toRadians(-270)))
-                .strafeTo(new Vector2d(34.5, 61), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(32.5, 38, Math.toRadians(-270)))
+                .strafeTo(new Vector2d(32.5, 61), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(34.5, 61, Math.toRadians(-270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(32.5, 61, Math.toRadians(-270)))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-20.5, 30.5, Math.toRadians(-43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
