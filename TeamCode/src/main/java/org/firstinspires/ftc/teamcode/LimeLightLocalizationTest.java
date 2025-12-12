@@ -61,9 +61,9 @@ public class LimeLightLocalizationTest extends OpMode {
     private double targetHeight = 43;
     private double gravity = 9.81;
     private double radius = 1.3;
-    private double k = 1; // drag 1.45
-    private double Cc = 1; // energy lost 0.45
-    private double S = 1; // slip 0.5
+    private double k = 1.5; // drag 1.45
+    private double Cc = 0.45; // energy lost 0.45
+    private double S = 0.9; // slip 0.5
 
     LLResultTypes.FiducialResult tag;
 
