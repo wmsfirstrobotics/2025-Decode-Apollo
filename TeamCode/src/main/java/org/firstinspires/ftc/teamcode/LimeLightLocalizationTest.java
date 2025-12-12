@@ -138,7 +138,11 @@ public class LimeLightLocalizationTest extends OpMode {
                 turnPower = 0;
             }
 
+
             rx = -turnPower;
+
+
+
 
 //            distance = getDistance(llResult.getTa());
             distance = -1;
@@ -147,6 +151,9 @@ public class LimeLightLocalizationTest extends OpMode {
 
             distance = -1;
         }
+
+// what this if statement does: WHEN OWEN PRESSES B, IT TELLS THE ROBOT THE CURRENT ANGLE OF THE LIMELIGHT, THEN TURNS THE ROBOT TO PERFECTLY FACE IT
+
 
         denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(y, x, rx)), 1));
 
