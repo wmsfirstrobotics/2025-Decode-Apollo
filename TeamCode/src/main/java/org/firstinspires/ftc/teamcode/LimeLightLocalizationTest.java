@@ -105,8 +105,8 @@ public class LimeLightLocalizationTest extends OpMode {
         limelight.start(); // can move to init if needed
 
         // Intake
-        targetRightRPM = -1200;
-        targetLeftRPM = 1200;
+        targetRightRPM = -900;
+        targetLeftRPM = 900;
 
         shooterOn = false;
         intakeOn = false;
