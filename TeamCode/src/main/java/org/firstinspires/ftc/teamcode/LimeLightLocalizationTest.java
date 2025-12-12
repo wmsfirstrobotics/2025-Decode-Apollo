@@ -140,8 +140,7 @@ public class LimeLightLocalizationTest extends OpMode {
 
             rx = -turnPower;
 
-//            distance = getDistance(llResult.getTa());
-            distance = -1;
+            distance = getDistance(llResult.getTa());
 
         } else {
             rx = -gamepad1.right_stick_x;
@@ -187,6 +186,7 @@ public class LimeLightLocalizationTest extends OpMode {
                 targetRightRPM = -1075;
                 targetLeftRPM = 1075;
             }
+
             ((DcMotorEx) leftShooter).setVelocity(targetLeftRPM);
             ((DcMotorEx) rightShooter).setVelocity(targetRightRPM);
 
@@ -299,12 +299,21 @@ public class LimeLightLocalizationTest extends OpMode {
 
     public double calculateRPM(double distance) {
         double factor = (60 * k) / (2 * Math.PI * radius * S * Cc);
+        // constant 7.3456127
 
         double root_numerator = gravity * Math.pow(distance, 2);
-        double root_denominator = 2 * Math.pow(Math.cos(shooterAngle), 2) * (distance * Math.tan(shooterAngle) - (targetHeight - shooterHeight));
+        // 9.81 * distance^2
+
+        double root_denominator = 2 *
+                Math.pow(Math.cos(Math.toRadians(shooterAngle)), 2) *
+                (distance * Math.tan(Math.toRadians(shooterAngle)) -
+                        (targetHeight - shooterHeight));
+        // 2 * cos(angle)^2 * (distance * tan(angle) - (t_h - s_h))
 
         double root = Math.sqrt(root_numerator / root_denominator);
+        // sqrt(num / denom)
 
         return factor * root;
+        // 7.3456127 * root
     }
 }
