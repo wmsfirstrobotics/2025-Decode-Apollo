@@ -41,13 +41,13 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory2 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
 
-                .splineToLinearHeading(new Pose2d(-10, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-8, 27, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         // start intaking motor
 
-        Action trajectory3 = myBot.actionBuilder(new Pose2d(-10, 27, Math.toRadians(-270)))
+        Action trajectory3 = myBot.actionBuilder(new Pose2d(-8, 27, Math.toRadians(-270)))
 
-                .strafeTo(new Vector2d(-10, 50.5), new TranslationalVelConstraint(intakeSpeed))
+                .strafeTo(new Vector2d(-8, 50.5), new TranslationalVelConstraint(intakeSpeed))
                 .strafeTo(new Vector2d(1.35, 50.5), new TranslationalVelConstraint(speed))
                 .strafeTo(new Vector2d(1.35, 60), new TranslationalVelConstraint(speed))
                 .build();
@@ -81,16 +81,16 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
 //                .turnTo(Math.toRadians(-22.5))
-                .splineToLinearHeading(new Pose2d(38, 33, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(36, 33, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(38, 33, Math.toRadians(-270)))
-                .strafeTo(new Vector2d(38, 56), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(36, 33, Math.toRadians(-270)))
+                .strafeTo(new Vector2d(36, 56), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(38, 56, Math.toRadians(-270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(36, 56, Math.toRadians(-270)))
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-18.5, 28.5, Math.toRadians(-43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();

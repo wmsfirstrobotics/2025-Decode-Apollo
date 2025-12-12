@@ -140,8 +140,8 @@ public class LimeLightLocalizationTest extends OpMode {
 
             rx = -turnPower;
 
-            distance = getDistance(llResult.getTa());
-
+//            distance = getDistance(llResult.getTa());
+            distance = -1;
         } else {
             rx = -gamepad1.right_stick_x;
 
@@ -175,16 +175,16 @@ public class LimeLightLocalizationTest extends OpMode {
                 targetRightRPM = -calculateRPM(distance);
 
             } else if (gamepad2.dpadUpWasPressed()) {
-                targetRightRPM = -1172.5;
-                targetLeftRPM = 1172.5;
+                targetRightRPM = -1200;
+                targetLeftRPM = 1200;
 
             } else if (gamepad2.dpadDownWasPressed()) {
-                targetRightRPM = -957;
-                targetLeftRPM = 957;
+                targetRightRPM = -900;
+                targetLeftRPM = 900;
 
             } else if (gamepad2.leftStickButtonWasPressed()) {
-                targetRightRPM = -1075;
-                targetLeftRPM = 1075;
+                targetRightRPM = -1000;
+                targetLeftRPM = 1000;
             }
 
             ((DcMotorEx) leftShooter).setVelocity(targetLeftRPM);
