@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-@Autonomous(name = "AutonRed TV Side", group = "Autonomous", preselectTeleOp = ("LocalizationTestBeta"))
+@Autonomous(name = "AutonRed TV Side", group = "Autonomous", preselectTeleOp = ("LiLiLocalizationTest"))
 
 public class AutonRedTVSide extends LinearOpMode {
 

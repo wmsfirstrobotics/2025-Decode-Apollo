@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-@Autonomous(name = "AutonRed TV Side States Beta", group = "Autonomous", preselectTeleOp = ("LocalizationTestBeta"))
+@Autonomous(name = "AutonRed TV Side States Beta", group = "Autonomous", preselectTeleOp = ("LiLiLocalizationTest"))
 
 public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
@@ -53,7 +53,7 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
                 .build();
         // stop intaking motor
 
-        Action trajectory4 = myBot.actionBuilder(new Pose2d(1.35, 56, Math.toRadians(-270)))
+        Action trajectory4 = myBot.actionBuilder(new Pose2d(1.35, 60, Math.toRadians(-270)))
 
                 .setReversed(true)
                 .splineToLinearHeading(new Pose2d(-23.5, 23.5, Math.toRadians(-49)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
@@ -81,28 +81,28 @@ public class AutonRedTVSideStatesBeta extends LinearOpMode {
 
         Action trajectory8 = myBot.actionBuilder(new Pose2d(-23.5, 23.5, Math.toRadians(-50)))
 //                .turnTo(Math.toRadians(-22.5))
-                .splineToLinearHeading(new Pose2d(32, 38, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(34.5, 38, Math.toRadians(-270)), Math.toRadians(270), new TranslationalVelConstraint(speed))
                 .build();
         //start intaking motor
 
-        Action trajectory9 = myBot.actionBuilder(new Pose2d(32, 38, Math.toRadians(-270)))
-                .strafeTo(new Vector2d(32, 61), new TranslationalVelConstraint(intakeSpeed))
+        Action trajectory9 = myBot.actionBuilder(new Pose2d(34.5, 38, Math.toRadians(-270)))
+                .strafeTo(new Vector2d(34.5, 61), new TranslationalVelConstraint(intakeSpeed))
                 .build();
         //stop intaking motor
 
-        Action trajectory10 = myBot.actionBuilder(new Pose2d(32, 61, Math.toRadians(-270)))
+        Action trajectory10 = myBot.actionBuilder(new Pose2d(34.5, 61, Math.toRadians(-270)))
                 .setReversed(true)
-                .splineToLinearHeading(new Pose2d(-18.5, 28.5, Math.toRadians(-43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
+                .splineToLinearHeading(new Pose2d(-20.5, 30.5, Math.toRadians(-43)), Math.toRadians(-200), new TranslationalVelConstraint(speed))
                 .build();
         //stop at in front of gate, 3 artifacts loaded for teleop. at this point there should be 9 artifacts in the classifier.
-        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-18.5, 28.5, Math.toRadians(-43)))
+        Action trajectory11beta = myBot.actionBuilder(new Pose2d(-20.5, 30.5, Math.toRadians(-43)))
                 .strafeTo(new Vector2d(12, 38.5), new TranslationalVelConstraint(speed))
                 .build();
 
         waitForStart();
 
-        leftShooter.setVelocity(900);
-        rightShooter.setVelocity(-900);
+        leftShooter.setVelocity(915);
+        rightShooter.setVelocity(-915);
         Actions.runBlocking(trajectory1);
         //shoot 3 balls
         indexer.setPower(-1);

@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-@Autonomous(name = "AutonBlue TV Side", group = "Autonomous", preselectTeleOp = ("LocalizationTestBeta"))
+@Autonomous(name = "AutonBlue TV Side", group = "Autonomous", preselectTeleOp = ("LiLiLocalizationTest"))
 
 public class AutonBlueTVSide extends LinearOpMode {
 

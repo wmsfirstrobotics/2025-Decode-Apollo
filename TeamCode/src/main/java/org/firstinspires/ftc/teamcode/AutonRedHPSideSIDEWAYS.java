@@ -7,7 +7,7 @@ import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "Red HP Side (Sideways)", group = "Autonomous")
+@Autonomous(name = "Red HP Side (Sideways)", group = "Autonomous", preselectTeleOp = ("LiLiLocalizationTest"))
 
 public class AutonRedHPSideSIDEWAYS extends LinearOpMode {
 

@@ -19,7 +19,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 import java.util.List;
 
-@TeleOp(name = "use this for LL", group = "Testing")
+@TeleOp(name = "LiLiLocalizationTest", group = "Testing")
 public class LimeLightLocalizationTest extends OpMode {
     private Limelight3A limelight;
     private IMU imu;
