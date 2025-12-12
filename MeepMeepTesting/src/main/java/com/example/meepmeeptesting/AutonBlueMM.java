@@ -18,7 +18,8 @@ public class AutonBlueMM {
 
         myBot.runAction(myBot.getDrive().actionBuilder(new Pose2d(62.5, -18, Math.toRadians(180)))
 
-                .splineToLinearHeading(new Pose2d(59, -11, Math.toRadians(45)), Math.toRadians(135))
+                .splineToLinearHeading(new Pose2d(53, -16, Math.toRadians(22.5)), Math.toRadians(180))
+
                 .build());
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_DECODE_JUICE_DARK)
